@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/core/custom/content_button.dart';
-import 'package:hesham_tarek/core/custom/custom_text_field.dart';
 import 'package:hesham_tarek/features/home/bloc/courseList/course_list_cubit.dart';
 import 'package:hesham_tarek/features/home/data/models/course_list/course_list.dart';
 import 'package:hesham_tarek/features/home/presentation/views/widgets/home_app_bar.dart';
@@ -62,7 +60,6 @@ class _CourseViewBodyState extends State<CourseViewBody> {
               const HomeAppBar(),
               Text("Error"),
               Text(S.of(context).Somethingwentwrong),
-              Text(state.errMessage),
             ],
           );
         } else if (state is CourseListSuccess) {

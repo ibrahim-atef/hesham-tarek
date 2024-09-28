@@ -73,6 +73,9 @@ class _VideoWidgetState extends State<VideoWidget> {
       _saveVideoProgress();
       _updateSystemUIOverlays();
     }
+    if (_controller.value.playerState == PlayerState.ended) {
+      _goToNextVideo();
+    }
   }
 
   void _updateSystemUIOverlays() {
@@ -93,6 +96,22 @@ class _VideoWidgetState extends State<VideoWidget> {
   Future<void> _initSharedPreferences() async {
     _prefs = await SharedPreferences.getInstance();
     await _loadSavedPosition();
+  }
+
+  void _goToNextVideo() {
+    if (widget.index + 1 < widget.allVideos!.length) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => VideoWidget(
+            isBought: widget.isBought,
+            allVideos: widget.allVideos,
+            index: widget.index + 1,
+            videoDesc: widget.videoDesc,
+          ),
+        ),
+      );
+    }
   }
 
   Future<void> _loadSavedPosition() async {

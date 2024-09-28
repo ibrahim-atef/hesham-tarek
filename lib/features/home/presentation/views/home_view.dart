@@ -38,6 +38,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+    _getData();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _startOffersAutoScroll();
       _startCoursesAutoScroll();
@@ -56,11 +57,17 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future<void> _refreshData() async {
-    // Add your refresh logic here. For example, you can trigger a Bloc event
+    print("Get data");
     context
         .read<CourseListCubit>()
-        .getCourseList(UserData().user!.id.toString()); // Example refresh
-    await Future.delayed(const Duration(seconds: 2)); // Simulate loading
+        .getCourseList(UserData().user?.id.toString() ?? "3411");
+  }
+
+  Future<void> _getData() async {
+    print("Get data");
+    context
+        .read<CourseListCubit>()
+        .getCourseList(UserData().user?.id.toString() ?? "3411");
   }
 
   void _startOffersAutoScroll() {
@@ -127,16 +134,25 @@ class _HomeViewState extends State<HomeView> {
         } else if (state is CourseListLoading) {
           return _buildLoadingView();
         } else {
-          return const Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Column(
-                children: [
-                  HomeAppBar(),
-                  Text("Something went wrong"),
-                ],
+          print("OK");
+          return Container(
+            child: RefreshIndicator(
+              onRefresh: _refreshData,
+              child: SingleChildScrollView(
+                // Make the content scrollable
+                physics:
+                    const AlwaysScrollableScrollPhysics(), // Ensures that the scroll can happen even if the content doesn't fill the screen
+                child: Column(
+                  children: [
+                    HomeAppBar(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Text("Something went wrong"),
+                    ),
+                  ],
+                ),
               ),
-            ],
+            ),
           );
         }
       },
@@ -154,18 +170,18 @@ class _HomeViewState extends State<HomeView> {
       body: Stack(
         clipBehavior: Clip.none,
         children: [
-          Column(
-            children: [
-              const HomeAppBar(),
-              Expanded(
-                child: _searchQuery.isEmpty
-                    ? RefreshIndicator(
-                        onRefresh: _refreshData,
-                        child: _buildHomeContent(state),
-                      )
-                    : _buildSearchResults(filteredCourses),
-              ),
-            ],
+          RefreshIndicator(
+            onRefresh: _refreshData,
+            child: Column(
+              children: [
+                const HomeAppBar(),
+                Expanded(
+                  child: _searchQuery.isEmpty
+                      ? _buildHomeContent(state)
+                      : _buildSearchResults(filteredCourses),
+                ),
+              ],
+            ),
           ),
           Positioned(
             top: 135.h,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PaymentMethod {
   final String method;
@@ -17,6 +18,7 @@ class PaymentMethod {
 
 class SubscriptionMethods extends StatelessWidget {
   SubscriptionMethods({super.key});
+
   final List<PaymentMethod> methods = [
     PaymentMethod(
       method: "Instapay",
@@ -58,6 +60,57 @@ class SubscriptionMethods extends StatelessWidget {
             textAlign: TextAlign.start,
           ),
           const SizedBox(height: 16),
+
+          // WhatsApp GestureDetector
+          GestureDetector(
+            onTap: () async {
+              const phoneNumber =
+                  '+201068386732'; // Replace with your target number
+              final Uri whatsappUri = Uri.parse('https://wa.me/$phoneNumber');
+              if (await canLaunch(whatsappUri.toString())) {
+                await launch(whatsappUri.toString());
+              } else {
+                throw 'Could not launch $whatsappUri';
+              }
+            },
+            child: Container(
+              height: 56,
+              padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border:
+                    Border.all(color: const Color(0xFFCAD1D1), width: 0.5.w),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    spreadRadius: 0,
+                    blurRadius: 2,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'WhatsApp', // Payment method name
+                    style: const TextStyle(fontSize: 17),
+                  ),
+                  SizedBox(width: 8.w),
+                  Image.asset(
+                    'assets/icons/whatsapp.png', // Replace with the WhatsApp icon path
+                    width: 32.w,
+                    height: 32.h,
+                    fit: BoxFit.contain,
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // Payment Methods
           Column(
             children: methods.map((item) {
               return GestureDetector(
@@ -88,14 +141,14 @@ class SubscriptionMethods extends StatelessWidget {
                       Text(
                         item.method,
                         style: const TextStyle(fontSize: 17),
-                      ), // Use the current item as the payment method name
+                      ),
                       SizedBox(width: 8.w),
                       Image.asset(
                         item.icon,
                         width: 32.w,
                         height: 32.h,
                         fit: BoxFit.contain,
-                      )
+                      ),
                     ],
                   ),
                 ),

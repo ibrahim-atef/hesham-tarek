@@ -18,9 +18,9 @@ class MyCourseViewBody extends StatefulWidget {
 class _MyCourseViewBodyState extends State<MyCourseViewBody> {
   @override
   void initState() {
-    context
-        .read<CourseListCubit>()
-        .getCourseList(UserData().user!.id.toString());
+    // context
+    //     .read<CourseListCubit>()
+    //     .getCourseList(UserData().user!.id.toString());
     super.initState();
   }
 
@@ -47,7 +47,6 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
                   children: [
                     const HomeAppBar(),
                     const Text("Something went wrong"),
-                    Text(state.errMessage),
                   ],
                 ),
               ],
@@ -58,82 +57,37 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
           final boughtCourses = state.courseList
               .where((course) => course.isBought ?? false)
               .toList();
+
           if (boughtCourses.isNotEmpty) {
             return RefreshIndicator(
               onRefresh: _refreshData,
-              child: Stack(
-                clipBehavior: Clip.none,
+              child: ListView(
+                // Make the whole content scrollable
+                physics:
+                    const AlwaysScrollableScrollPhysics(), // Always allow scroll to refresh
                 children: [
-                  Column(
-                    children: [
-                      const HomeAppBar(),
-                      Expanded(
-                        child: ListView(
-                          shrinkWrap: true,
-                          children: [
-                            SizedBox(
-                              height: (145 * boughtCourses.length).h,
-                              width: double.infinity,
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                physics: const BouncingScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  if (index < boughtCourses.length) {
-                                    return Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 8.h, horizontal: 16.w),
-                                      child: ViewCourseButton(
-                                          courseList: boughtCourses[index]),
-                                    );
-                                  } else {
-                                    return const SizedBox
-                                        .shrink(); // Or handle the case where the index is out of bounds
-                                  }
-                                },
-                                itemCount: state.courseList.length,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
+                  const HomeAppBar(), // Make sure this is scrollable as well
+                  ListView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    physics:
+                        const BouncingScrollPhysics(), // Optional bounce effect
+                    shrinkWrap:
+                        true, // Make sure it takes the minimal required height
+                    itemCount: boughtCourses.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        child:
+                            ViewCourseButton(courseList: boughtCourses[index]),
+                      );
+                    },
                   ),
-                  // Positioned(
-                  //   top: 117.h,
-                  //   left: 16.w,
-                  //   right: 16.w,
-                  //   child: SizedBox(
-                  //     height: 60.h,
-                  //     child: const SearchFieldHome(),
-                  //   ),
-                  // ),
                 ],
               ),
             );
           } else {
-            return RefreshIndicator(
-              onRefresh: _refreshData,
-              child: SingleChildScrollView(
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Column(
-                      children: [
-                        const HomeAppBar(),
-                        SizedBox(
-                          height: 500.h,
-                          child: Center(
-                              child: Text(
-                                  S.of(context).Youdonthaveanyboughtcourses)),
-                        ),
-                        SizedBox(
-                          height: 500.h,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            return Center(
+              child: Text("No courses found"),
             );
           }
         } else {
