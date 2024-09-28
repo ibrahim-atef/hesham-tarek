@@ -1,0 +1,13 @@
+<rss version="2.0">
+  <channel>
+    <title>App Updates</title>
+    <item>
+      <title>Version 1.0.1</title>
+      <description>Bug fixes and performance improvements</description>
+      <enclosure 
+        url="https://example.com/app.apk" 
+        sparkle:version="1.0.1"
+        sparkle:shortVersionString="1.0.1" />
+    </item>
+  </channel>
+</rss>
