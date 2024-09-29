@@ -7,12 +7,9 @@ import 'package:hesham_tarek/core/custom/content_button.dart';
 import 'package:hesham_tarek/core/custom/whatsapp_floating_widget.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
-import 'package:hesham_tarek/features/courses/presentation/views/course_view.dart';
 import 'package:hesham_tarek/features/courses/presentation/views/widgets/course_view_body.dart';
 import 'package:hesham_tarek/features/home/bloc/courseList/course_list_cubit.dart';
-import 'package:hesham_tarek/features/home/presentation/views/widgets/content_selection.dart';
 import 'package:hesham_tarek/features/home/presentation/views/widgets/course_container.dart';
-import 'package:hesham_tarek/features/home/presentation/views/widgets/courses_and_see_all.dart';
 import 'package:hesham_tarek/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:hesham_tarek/features/home/presentation/views/widgets/search_field_home.dart';
 import 'package:hesham_tarek/generated/l10n.dart';
@@ -57,14 +54,12 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future<void> _refreshData() async {
-    print("Get data");
     context
         .read<CourseListCubit>()
         .getCourseList(UserData().user?.id.toString() ?? "3411");
   }
 
   Future<void> _getData() async {
-    print("Get data");
     context
         .read<CourseListCubit>()
         .getCourseList(UserData().user?.id.toString() ?? "3411");
@@ -138,10 +133,10 @@ class _HomeViewState extends State<HomeView> {
           return Container(
             child: RefreshIndicator(
               onRefresh: _refreshData,
-              child: SingleChildScrollView(
+              child: const SingleChildScrollView(
                 // Make the content scrollable
                 physics:
-                    const AlwaysScrollableScrollPhysics(), // Ensures that the scroll can happen even if the content doesn't fill the screen
+                   AlwaysScrollableScrollPhysics(), // Ensures that the scroll can happen even if the content doesn't fill the screen
                 child: Column(
                   children: [
                     HomeAppBar(),

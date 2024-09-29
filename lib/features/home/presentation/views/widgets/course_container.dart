@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,7 +47,7 @@ class CourseContainer extends StatelessWidget {
                   border:
                       Border.all(color: const Color(0xff2C4649), width: 1.5),
                   image: DecorationImage(
-                      image: NetworkImage(image), fit: BoxFit.cover),
+                      image: CachedNetworkImageProvider(image), fit: BoxFit.cover),
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(10)),
               child: Container(

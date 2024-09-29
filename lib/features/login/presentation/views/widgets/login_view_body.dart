@@ -201,7 +201,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                 ),
                                 SizedBox(width: 8.w),
                                 Icon(
-                                  Icons.lock,
+                                  isButtonEnabled
+                                      ? Icons.lock_open
+                                      : Icons.lock_outline_rounded,
                                   color: isButtonEnabled
                                       ? const Color(0xff11191A)
                                       : Colors.white,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +43,7 @@ class ViewCourseButton extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                      image: NetworkImage(
+                      image: CachedNetworkImageProvider(
                           'http://adlink2019-001-site58.etempurl.com/lessonimg/${courseList.id}.jpg'))),
             ),
           ),

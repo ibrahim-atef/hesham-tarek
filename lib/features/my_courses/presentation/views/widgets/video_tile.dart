@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:hesham_tarek/features/my_courses/data/models/course_detail/lesson_api_dto.dart';
@@ -73,7 +74,7 @@ class _VideoTileState extends State<VideoTile> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
-                        image: NetworkImage(
+                        image: CachedNetworkImageProvider(
                             'https://img.youtube.com/vi/${widget.videoId}/0.jpg'),
                         fit: BoxFit.cover,
                       ),
