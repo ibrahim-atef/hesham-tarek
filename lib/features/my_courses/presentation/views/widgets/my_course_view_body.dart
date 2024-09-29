@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
 import 'package:hesham_tarek/features/home/bloc/courseList/course_list_cubit.dart';
 import 'package:hesham_tarek/features/my_courses/presentation/views/widgets/view_course_button.dart';
-import 'package:hesham_tarek/generated/l10n.dart';
 
 import '../../../../home/presentation/views/widgets/home_app_bar.dart';
 
@@ -40,13 +39,13 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
         if (state is CourseListFailure) {
           return RefreshIndicator(
             onRefresh: _refreshData,
-            child: Stack(
+            child: const Stack(
               clipBehavior: Clip.none,
               children: [
                 Column(
                   children: [
-                    const HomeAppBar(),
-                    const Text("Something went wrong"),
+                    HomeAppBar(),
+                    Text("Something went wrong"),
                   ],
                 ),
               ],
@@ -59,34 +58,37 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
               .toList();
 
           if (boughtCourses.isNotEmpty) {
-            return RefreshIndicator(
-              onRefresh: _refreshData,
-              child: ListView(
-                // Make the whole content scrollable
-                physics:
-                    const AlwaysScrollableScrollPhysics(), // Always allow scroll to refresh
-                children: [
-                  const HomeAppBar(), // Make sure this is scrollable as well
-                  ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    physics:
-                        const BouncingScrollPhysics(), // Optional bounce effect
-                    shrinkWrap:
-                        true, // Make sure it takes the minimal required height
-                    itemCount: boughtCourses.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
-                        child:
-                            ViewCourseButton(courseList: boughtCourses[index]),
-                      );
-                    },
+            return Stack(
+              clipBehavior: Clip.none,
+              children: [
+                RefreshIndicator(
+                  onRefresh: _refreshData,
+                  child: Column(
+                    children: [
+                      const HomeAppBar(),
+                      Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: boughtCourses.length + 1,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(vertical: 8.h),
+                              child: index >= boughtCourses.length
+                                  ? SizedBox(height: 400.h)
+                                  : ViewCourseButton(
+                                      courseList: boughtCourses[index]),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             );
           } else {
-            return Center(
+            return const Center(
               child: Text("No courses found"),
             );
           }

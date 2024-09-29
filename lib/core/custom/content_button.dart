@@ -105,8 +105,7 @@ class ContentButton extends StatelessWidget {
                             ],
                           ),
                           Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: EdgeInsets.symmetric(horizontal: 4.w),
                             child: ElevatedButton(
                               onPressed: () {
                                 context
