@@ -16,15 +16,8 @@ class MyCourseViewBody extends StatefulWidget {
 }
 
 class _MyCourseViewBodyState extends State<MyCourseViewBody> {
-  @override
-  void initState() {
-    // context
-    //     .read<CourseListCubit>()
-    //     .getCourseList(UserData().user!.id.toString());
-    super.initState();
-  }
-
   var searchController = TextEditingController();
+
   Future<void> _refreshData() async {
     // Add your refresh logic here. For example, you can trigger a Bloc event
     context
@@ -40,14 +33,11 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
         if (state is CourseListFailure) {
           return RefreshIndicator(
             onRefresh: _refreshData,
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Column(
-                  children: [
-                    const HomeAppBar(),
-                    const Text("Something went wrong"),
-                  ],
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(child: const HomeAppBar()), // AppBar on top
+                SliverFillRemaining(
+                  child: Center(child: const Text("Something went wrong")),
                 ),
               ],
             ),
@@ -61,44 +51,42 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
           if (boughtCourses.isNotEmpty) {
             return RefreshIndicator(
               onRefresh: _refreshData,
-              child: ListView(
-                // Make the whole content scrollable
-                physics:
-                    const AlwaysScrollableScrollPhysics(), // Always allow scroll to refresh
-                children: [
-                  const HomeAppBar(), // Make sure this is scrollable as well
-                  ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    physics:
-                        const BouncingScrollPhysics(), // Optional bounce effect
-                    shrinkWrap:
-                        true, // Make sure it takes the minimal required height
-                    itemCount: boughtCourses.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
-                        child:
-                            ViewCourseButton(courseList: boughtCourses[index]),
-                      );
-                    },
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                      child: const HomeAppBar()), // AppBar on top
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        final course = boughtCourses[index];
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16.w, vertical: 8.h),
+                          child: ViewCourseButton(courseList: course),
+                        );
+                      },
+                      childCount: boughtCourses.length,
+                    ),
                   ),
                 ],
               ),
             );
           } else {
-            return Center(
-              child: Text("No courses found"),
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(child: const HomeAppBar()), // AppBar on top
+                SliverFillRemaining(
+                  child: Center(child: const Text("No courses found")),
+                ),
+              ],
             );
           }
         } else {
-          return const Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Column(
-                children: [
-                  HomeAppBar(),
-                  Center(child: CircularProgressIndicator())
-                ],
+          return CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(child: const HomeAppBar()), // AppBar on top
+              SliverFillRemaining(
+                child: Center(child: const CircularProgressIndicator()),
               ),
             ],
           );
