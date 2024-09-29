@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
 import 'package:hesham_tarek/features/home/bloc/courseList/course_list_cubit.dart';
 import 'package:hesham_tarek/features/my_courses/presentation/views/widgets/view_course_button.dart';
-import 'package:hesham_tarek/generated/l10n.dart';
 
 import '../../../../home/presentation/views/widgets/home_app_bar.dart';
 
