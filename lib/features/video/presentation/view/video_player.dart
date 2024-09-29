@@ -73,8 +73,12 @@ class _VideoWidgetState extends State<VideoWidget> {
       _saveVideoProgress();
       _updateSystemUIOverlays();
     }
-    if (_controller.value.playerState == PlayerState.ended) {
+    if (_controller.value.playerState == PlayerState.ended &&
+        widget.isBought == true) {
       _goToNextVideo();
+    } else if (_controller.value.playerState == PlayerState.ended &&
+        widget.isBought == false) {
+      Navigator.pop(context);
     }
   }
 
