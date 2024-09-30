@@ -47,7 +47,8 @@ class CourseContainer extends StatelessWidget {
                   border:
                       Border.all(color: const Color(0xff2C4649), width: 1.5),
                   image: DecorationImage(
-                      image: CachedNetworkImageProvider(image), fit: BoxFit.cover),
+                      image: CachedNetworkImageProvider(image),
+                      fit: BoxFit.cover),
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(10)),
               child: Container(

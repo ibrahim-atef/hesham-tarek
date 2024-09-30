@@ -49,26 +49,26 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
 
           if (boughtCourses.isNotEmpty) {
             return RefreshIndicator(
-              onRefresh: _refreshData,
-              child: CustomScrollView(
-                slivers: [
-                  SliverToBoxAdapter(
-                      child: const HomeAppBar()), // AppBar on top
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final course = boughtCourses[index];
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 16.w, vertical: 8.h),
-                          child: ViewCourseButton(courseList: course),
-                        );
-                      },
-                      childCount: boughtCourses.length,
+                onRefresh: _refreshData,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                        child: const HomeAppBar()), // AppBar on top
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          final course = boughtCourses[index];
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.w, vertical: 8.h),
+                            child: ViewCourseButton(courseList: course),
+                          );
+                        },
+                        childCount: boughtCourses.length,
+                      ),
                     ),
-                  ),
-              ],)
-            );
+                  ],
+                ));
           } else {
             return CustomScrollView(
               slivers: [

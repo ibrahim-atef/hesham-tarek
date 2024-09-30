@@ -136,7 +136,7 @@ class _HomeViewState extends State<HomeView> {
               child: const SingleChildScrollView(
                 // Make the content scrollable
                 physics:
-                   AlwaysScrollableScrollPhysics(), // Ensures that the scroll can happen even if the content doesn't fill the screen
+                    AlwaysScrollableScrollPhysics(), // Ensures that the scroll can happen even if the content doesn't fill the screen
                 child: Column(
                   children: [
                     HomeAppBar(),

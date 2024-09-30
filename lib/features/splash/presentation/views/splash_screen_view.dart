@@ -17,11 +17,12 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   void initState() {
     context.read<LoginCubit>().checkLoginStatus(context);
     Future.delayed(const Duration(seconds: 3)).then((value) {
-    if (mounted) {
-  final user = UserData().user;
-  user == null?context.read<CourseListCubit>().getCourseList("3411"):
-  context.read<CourseListCubit>().getCourseList(user.id.toString());
-}
+      if (mounted) {
+        final user = UserData().user;
+        user == null
+            ? context.read<CourseListCubit>().getCourseList("3411")
+            : context.read<CourseListCubit>().getCourseList(user.id.toString());
+      }
       Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
     });
     super.initState();

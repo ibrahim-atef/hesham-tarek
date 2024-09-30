@@ -161,9 +161,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                               );
                             } else if (state is LoginFailure) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text(
-                                          "Incorrect UserName or Password")));
+                                  SnackBar(
+                                      content: Text(state.errMessage ==
+                                              "Wrong Device"
+                                          ? state.errMessage
+                                          : "Incorrect UserName or Password")));
                             }
                           },
                           child: ElevatedButton(
@@ -178,6 +180,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                             ),
                             onPressed: isButtonEnabled
                                 ? () async {
+                                    String imei =
+                                        await Functions.getDeviceIdentifiers();
                                     String phoneNumber = phoneController.text;
                                     if (selectedCountryCode == 'EG' &&
                                         !phoneNumber.startsWith('0')) {
@@ -186,7 +190,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                     context.read<LoginCubit>().loginUser(
                                         phoneNumber,
                                         passwordController.text,
-                                        await Functions.getDeviceIdentifiers(),
+                                        imei,
                                         context);
                                   }
                                 : null, // Disable button when fields are empty

@@ -11,6 +11,7 @@ import 'package:hesham_tarek/features/home/bloc/courseList/course_list_cubit.dar
 import 'package:hesham_tarek/features/home/data/repos/course_repo_implementation.dart';
 import 'package:hesham_tarek/features/home/presentation/views/home_nav_bar.dart';
 import 'package:hesham_tarek/features/login/bloc/login_cubit/login_cubit.dart';
+import 'package:hesham_tarek/features/login/data/repos/imei_repo_implementation.dart';
 import 'package:hesham_tarek/features/login/data/repos/login_repo_implementation.dart';
 import 'package:hesham_tarek/features/login/presentation/views/login_view.dart';
 import 'package:hesham_tarek/features/my_courses/bloc/cubit/course_detail_cubit.dart';
@@ -47,7 +48,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (_) => LoginCubit(getIt.get<LoginRepoImplementation>())),
+            create: (_) => LoginCubit(getIt.get<LoginRepoImplementation>(),
+                getIt.get<ImeiRepoImplementation>())),
         BlocProvider(
             create: (_) =>
                 RegisterUserCubit(getIt.get<CreateUserRepoImplementation>())),
