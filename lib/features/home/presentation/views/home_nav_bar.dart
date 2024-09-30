@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
-import 'package:hesham_tarek/features/favorites/presentation/view/favorites_view.dart';
 import 'package:hesham_tarek/features/home/presentation/views/home_view.dart';
 import 'package:hesham_tarek/features/login/bloc/login_cubit/login_cubit.dart';
 import 'package:hesham_tarek/features/notSignedIn/presentation/view/not_signed_in.dart';

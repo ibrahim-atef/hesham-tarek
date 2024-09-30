@@ -7,6 +7,7 @@ import 'package:radio_group_v2/widgets/view_models/radio_group_controller.dart';
 import 'package:radio_group_v2/widgets/views/radio_group.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class LanguageToggle extends StatelessWidget {
   LanguageToggle({super.key});
   RadioGroupController myController = RadioGroupController();

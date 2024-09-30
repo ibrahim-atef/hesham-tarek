@@ -158,28 +158,6 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SvgPicture.asset(
-                            "assets/icons/studentsNo.svg",
-                            width: 20,
-                          ),
-                          const SizedBox(width: 7),
-                          Text(widget.courseList.studentsNo.toString(),
-                              style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black)),
-                          const SizedBox(width: 7),
-                          Text(S.of(context).Student,
-                              style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black)),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
                             "assets/icons/rateNo.svg",
                             width: 20,
                           ),
