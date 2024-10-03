@@ -52,8 +52,8 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
                 onRefresh: _refreshData,
                 child: CustomScrollView(
                   slivers: [
-                    SliverToBoxAdapter(
-                        child: const HomeAppBar()), // AppBar on top
+                    const SliverToBoxAdapter(
+                        child: HomeAppBar()), // AppBar on top
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (context, index) {
@@ -70,21 +70,21 @@ class _MyCourseViewBodyState extends State<MyCourseViewBody> {
                   ],
                 ));
           } else {
-            return CustomScrollView(
+            return const CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(child: const HomeAppBar()), // AppBar on top
+                SliverToBoxAdapter(child: HomeAppBar()), // AppBar on top
                 SliverFillRemaining(
-                  child: Center(child: const Text("No courses found")),
+                  child: Center(child: Text("No courses found")),
                 ),
               ],
             );
           }
         } else {
-          return CustomScrollView(
+          return const CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(child: const HomeAppBar()), // AppBar on top
+              SliverToBoxAdapter(child: HomeAppBar()), // AppBar on top
               SliverFillRemaining(
-                child: Center(child: const CircularProgressIndicator()),
+                child: Center(child: CircularProgressIndicator()),
               ),
             ],
           );

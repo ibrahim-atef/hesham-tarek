@@ -108,6 +108,11 @@ class ContentButton extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 4.w),
                             child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor: WidgetStateProperty.all(
+                                      courseList.isBought == true
+                                          ? const Color(0xFF2C4649)
+                                          : const Color(0xFFF2B91D))),
                               onPressed: () {
                                 context
                                     .read<CourseDetailCubit>()
@@ -125,7 +130,9 @@ class ContentButton extends StatelessWidget {
                                 courseList.isBought == true
                                     ? S.of(context).ViewCourse
                                     : S.of(context).Subscribe,
-                                style: TextStyles.semiNormalBlack15,
+                                style: courseList.isBought == true
+                                    ? TextStyles.light15
+                                    : TextStyles.semiNormalBlack15,
                               ),
                             ),
                           )

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hesham_tarek/core/custom/content_button.dart';
-import 'package:hesham_tarek/core/custom/whatsapp_floating_widget.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
 import 'package:hesham_tarek/features/courses/presentation/views/widgets/course_view_body.dart';
@@ -129,23 +128,20 @@ class _HomeViewState extends State<HomeView> {
         } else if (state is CourseListLoading) {
           return _buildLoadingView();
         } else {
-          print("OK");
-          return Container(
-            child: RefreshIndicator(
-              onRefresh: _refreshData,
-              child: const SingleChildScrollView(
-                // Make the content scrollable
-                physics:
-                    AlwaysScrollableScrollPhysics(), // Ensures that the scroll can happen even if the content doesn't fill the screen
-                child: Column(
-                  children: [
-                    HomeAppBar(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20.0),
-                      child: Text("Something went wrong"),
-                    ),
-                  ],
-                ),
+          return RefreshIndicator(
+            onRefresh: _refreshData,
+            child: const SingleChildScrollView(
+              // Make the content scrollable
+              physics:
+                  AlwaysScrollableScrollPhysics(), // Ensures that the scroll can happen even if the content doesn't fill the screen
+              child: Column(
+                children: [
+                  HomeAppBar(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20.0),
+                    child: Text("Something went wrong"),
+                  ),
+                ],
               ),
             ),
           );
@@ -163,7 +159,6 @@ class _HomeViewState extends State<HomeView> {
 
     return Scaffold(
       body: Stack(
-        clipBehavior: Clip.none,
         children: [
           RefreshIndicator(
             onRefresh: _refreshData,
@@ -189,7 +184,6 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
-      floatingActionButton: WhatsappFloatingWidget(heroTag: "home"),
     );
   }
 

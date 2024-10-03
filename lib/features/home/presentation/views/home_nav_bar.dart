@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hesham_tarek/core/custom/whatsapp_floating_widget.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
 import 'package:hesham_tarek/features/home/presentation/views/home_view.dart';
 import 'package:hesham_tarek/features/login/bloc/login_cubit/login_cubit.dart';
@@ -64,6 +65,10 @@ class _HomeNavBarState extends State<HomeNavBar> {
         //     .read<CourseListCubit>()
         //     .getCourseList(UserData().user!.id.toString());
         return PersistentTabView(
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.all(0),
+            child: WhatsappFloatingWidget(heroTag: "home"),
+          ),
           context,
           controller: controller,
           screens: const [

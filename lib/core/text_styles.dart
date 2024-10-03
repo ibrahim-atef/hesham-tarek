@@ -48,6 +48,10 @@ abstract class TextStyles {
       fontSize: 17,
       fontWeight: FontWeight.w500,
       color: const Color(0xff1D3AF2));
+  static final mediumDarkBlue17 = GoogleFonts.openSans(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: const Color(0xFF2C4649));
   static final primary15 = GoogleFonts.openSans(
       fontSize: 15,
       fontWeight: FontWeight.w500,

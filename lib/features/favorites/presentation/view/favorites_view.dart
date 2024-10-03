@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hesham_tarek/core/custom/whatsapp_floating_widget.dart';
 import 'package:hesham_tarek/generated/l10n.dart';
 
 class FavoritesView extends StatelessWidget {
@@ -12,7 +11,6 @@ class FavoritesView extends StatelessWidget {
         title: Text(S.of(context).Favorites),
       ),
       body: Container(),
-      floatingActionButton: WhatsappFloatingWidget(heroTag: "favorites"),
     );
   }
 }

@@ -164,7 +164,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                           height: 80.h,
                           child: IntlPhoneField(
                             validator: (value) {
-                              if (value!.number.length < 10) {
+                              if (value!.number.length < 7) {
                                 return "Please enter a valid phone number";
                               }
                               return null;
@@ -237,8 +237,29 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                                           "Account Created Successfully")));
                             }
                             if (state is RegisterUserFailure) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(state.errMessage)));
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    content: Text(
+                                      state.errMessage,
+                                      style: TextStyles.semiNormalBlack15,
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pop(); // Close the dialog
+                                        },
+                                        child: Text('OK',
+                                            style: TextStyles.mediumDarkBlue17),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             }
                           },
                           builder: (context, state) {

@@ -160,12 +160,31 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                     PageTransitionAnimation.fade,
                               );
                             } else if (state is LoginFailure) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      content: Text(state.errMessage ==
-                                              "Wrong Device"
-                                          ? state.errMessage
-                                          : "Incorrect UserName or Password")));
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    content: Text(
+                                      state.errMessage == "Wrong Device"
+                                          ? "This Account is linked with another device"
+                                          : "Incorrect UserName or Password",
+                                      style: TextStyles.semiNormalBlack15,
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pop(); // Close the dialog
+                                        },
+                                        child: Text('OK',
+                                            style: TextStyles.mediumDarkBlue17),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             }
                           },
                           child: ElevatedButton(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hesham_tarek/core/custom/whatsapp_floating_widget.dart';
 import 'package:hesham_tarek/features/subscription/presentation/views/widgets/subscription_methods.dart';
 import 'package:hesham_tarek/generated/l10n.dart';
@@ -18,8 +19,11 @@ class Subscription extends StatelessWidget {
               icon: const Icon(Icons.arrow_back_ios_rounded),
               color: Colors.white)),
       body: SubscriptionMethods(),
-      floatingActionButton: WhatsappFloatingWidget(
-        heroTag: "subscribe",
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom + 8.0.h),
+        child: WhatsappFloatingWidget(heroTag: "home"),
       ),
     );
   }
