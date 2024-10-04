@@ -9,7 +9,6 @@ import 'package:hesham_tarek/features/login/bloc/login_cubit/login_cubit.dart';
 import 'package:hesham_tarek/features/login/presentation/views/login_view.dart';
 import 'package:hesham_tarek/features/profile/presentation/views/widgets/language_toggle.dart';
 import 'package:hesham_tarek/generated/l10n.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -121,19 +120,16 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: Colors.black),
                 ),
-                child: IntlPhoneField(
-                  disableLengthCheck: true,
-                  controller: text,
-                  style: GoogleFonts.openSans(color: Colors.black),
+                child: TextFormField(
                   readOnly: true,
-                  dropdownDecoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(8),
-                        bottomLeft: Radius.circular(8)),
-                    color: Color(0xfff3f4f6),
-                  ),
-                  showDropdownIcon: false,
-                  initialCountryCode: "EG",
+                  keyboardType: TextInputType.number,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    if (value!.length <= 7) {
+                      return "Please enter a valid Phone Number";
+                    }
+                  },
+                  controller: text,
                 ),
               ),
             ),
