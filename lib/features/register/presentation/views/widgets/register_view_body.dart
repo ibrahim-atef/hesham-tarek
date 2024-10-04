@@ -10,8 +10,6 @@ import 'package:hesham_tarek/features/login/presentation/views/widgets/logo_plus
 import 'package:hesham_tarek/features/register/bloc/cubit/register_user_cubit.dart';
 import 'package:hesham_tarek/features/splash/presentation/views/widgets/blur_container.dart';
 import 'package:hesham_tarek/generated/l10n.dart';
-import 'package:intl_phone_field/countries.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import '../../../../login/presentation/views/login_view.dart';
@@ -162,28 +160,25 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                         SizedBox(height: 8.h),
                         SizedBox(
                           height: 80.h,
-                          child: IntlPhoneField(
+                          child: TextFormField(
                             validator: (value) {
-                              if (value!.number.length < 7) {
+                              if (value!.length < 10) {
                                 return "Please enter a valid phone number";
                               }
                               return null;
                             },
-                            disableLengthCheck: true,
-                            dropdownDecoration: const BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8)),
-                              color: Color(0xfff3f4f6),
-                            ),
-                            showDropdownIcon: false,
-                            onCountryChanged: (Country country) {
-                              setState(() {
-                                selectedCountryCode = country.code;
-                              });
-                            },
                             controller: phoneController,
-                            initialCountryCode: "EG",
+                            decoration: InputDecoration(
+                              labelText: 'Phone Number',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(8),
+                                  bottomLeft: Radius.circular(8),
+                                ),
+                              ),
+                              fillColor: Color(0xfff3f4f6),
+                              filled: true,
+                            ),
                           ),
                         ),
 
@@ -279,11 +274,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                               ),
                               onPressed: isButtonEnabled
                                   ? () async {
-                                      String phoneNumber = phoneController.text;
-                                      if (selectedCountryCode == 'EG' &&
-                                          !phoneNumber.startsWith('0')) {
-                                        phoneNumber = "0$phoneNumber";
-                                      }
                                       context
                                           .read<RegisterUserCubit>()
                                           .registerUser(
