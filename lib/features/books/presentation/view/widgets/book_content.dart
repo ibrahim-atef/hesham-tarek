@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookContent extends StatelessWidget {
   const BookContent({super.key});
@@ -35,7 +36,7 @@ class BookContent extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Stack(
+              child:  Stack(
                 children: [
                   // Book background
                   // Book title
@@ -46,7 +47,7 @@ class BookContent extends StatelessWidget {
                     child: Text(
                       'Book Title', // Replace with your book titles
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.openSans(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,

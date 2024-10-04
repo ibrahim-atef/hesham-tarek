@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
 import 'package:hesham_tarek/features/login/bloc/login_cubit/login_cubit.dart';
@@ -123,7 +124,7 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                 child: IntlPhoneField(
                   disableLengthCheck: true,
                   controller: text,
-                  style: const TextStyle(color: Colors.black),
+                  style: GoogleFonts.openSans(color: Colors.black),
                   readOnly: true,
                   dropdownDecoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -171,7 +172,7 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                                 children: [
                                   Text(
                                     S.of(context).Logout,
-                                    style: const TextStyle(
+                                    style: GoogleFonts.openSans(
                                         fontSize: 22,
                                         fontWeight: FontWeight.w600,
                                         color: Colors.black),
@@ -193,7 +194,7 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                               Text(
                                 S.of(context).Areyousureyouwanttologout,
                                 textAlign: TextAlign.left,
-                                style: const TextStyle(
+                                style: GoogleFonts.openSans(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black),
@@ -220,7 +221,7 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                                   Text(
                                     S.of(context).RemembermyLogininfo,
                                     textAlign: TextAlign.left,
-                                    style: const TextStyle(
+                                    style: GoogleFonts.openSans(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xFF4F6163)),
@@ -246,7 +247,7 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                                         child: Text(
                                           S.of(context).Cancel,
                                           textAlign: TextAlign.left,
-                                          style: const TextStyle(
+                                          style: GoogleFonts.openSans(
                                               fontSize: 17,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.black),
@@ -278,7 +279,7 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                                         child: Text(
                                           S.of(context).Yes,
                                           textAlign: TextAlign.left,
-                                          style: const TextStyle(
+                                          style: GoogleFonts.openSans(
                                               fontSize: 17,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.white),
@@ -325,8 +326,8 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                   ),
                   Text(
                     S.of(context).Logout,
-                    style: const TextStyle(
-                        color: Color(0xFFEF4444),
+                    style: GoogleFonts.openSans(
+                        color: const Color(0xFFEF4444),
                         fontSize: 17,
                         fontWeight: FontWeight.w600),
                   ),

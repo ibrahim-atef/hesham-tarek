@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProjectContent extends StatelessWidget {
   const ProjectContent({
@@ -23,10 +24,10 @@ class ProjectContent extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              const Expanded(
+              Expanded(
                 child: Text(
                   "Design note",
-                  style: TextStyle(
+                  style: GoogleFonts.openSans(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: Colors.black),
@@ -40,7 +41,7 @@ class ProjectContent extends StatelessWidget {
                       children: [
                         Text(
                           "Download",
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                             fontSize: 16,
                             color: Colors.blue[700],
                           ),

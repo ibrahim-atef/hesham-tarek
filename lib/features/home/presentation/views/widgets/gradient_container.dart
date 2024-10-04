@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class GradientButton extends StatelessWidget {
@@ -42,7 +43,7 @@ class GradientButton extends StatelessWidget {
           ),
           Text(
             buttonText,
-            style: const TextStyle(fontSize: 16, color: Colors.black87),
+            style: GoogleFonts.openSans(fontSize: 16, color: Colors.black87),
           )
         ],
       ),

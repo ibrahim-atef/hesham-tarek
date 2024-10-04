@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/core/custom/whatsapp_floating_widget.dart';
 import 'package:hesham_tarek/features/home/data/models/course_list/course_list.dart';
 import 'package:hesham_tarek/features/my_courses/presentation/views/widgets/course_details_view_body.dart';
@@ -34,7 +35,7 @@ class CourseDetailsView extends StatelessWidget {
                     child: Text(
                       S.of(context).SubscribetoseealltheVideos,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style: GoogleFonts.openSans(
                         fontSize: 16,
                         color: Colors.black,
                         fontWeight: FontWeight.w500,

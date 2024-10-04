@@ -170,7 +170,7 @@ class _VideoWidgetState extends State<VideoWidget> {
           Expanded(
             child: Text(
               _controller.metadata.title,
-              style: const TextStyle(
+              style:  GoogleFonts.openSans(
                 color: Colors.white,
                 fontSize: 18.0,
               ),

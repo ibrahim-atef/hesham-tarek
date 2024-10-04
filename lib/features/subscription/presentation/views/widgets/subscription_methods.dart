@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
@@ -96,7 +98,7 @@ class SubscriptionMethods extends StatelessWidget {
                 children: [
                   Text(
                     'WhatsApp', // Payment method name
-                    style: const TextStyle(fontSize: 17),
+                    style: TextStyles.normalBlack16,
                   ),
                   SizedBox(width: 8.w),
                   Image.asset(
@@ -140,7 +142,7 @@ class SubscriptionMethods extends StatelessWidget {
                     children: [
                       Text(
                         item.method,
-                        style: const TextStyle(fontSize: 17),
+                        style: TextStyles.normalBlack16,
                       ),
                       SizedBox(width: 8.w),
                       Image.asset(

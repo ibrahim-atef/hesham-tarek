@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/features/profile/bloc/language_cubit/language_cubit.dart';
 import 'package:hesham_tarek/features/profile/bloc/language_cubit/language_state.dart';
 import 'package:radio_group_v2/utils/radio_group_decoration.dart';
@@ -33,7 +34,7 @@ class LanguageToggle extends StatelessWidget {
         orientation: RadioGroupOrientation.horizontal,
         decoration: RadioGroupDecoration(
           spacing: 10.0,
-          labelStyle: const TextStyle(
+          labelStyle: GoogleFonts.openSans(
             color: Colors.black,
           ),
           activeColor: Theme.of(context).colorScheme.secondary,

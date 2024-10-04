@@ -158,31 +158,18 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                           style: TextStyles.light15,
                         ),
                         SizedBox(height: 8.h),
-                        SizedBox(
-                          height: 80.h,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value!.length < 10) {
-                                return "Please enter a valid phone number";
-                              }
-                              return null;
-                            },
-                            controller: phoneController,
-                            decoration: InputDecoration(
-                              labelText: 'Phone Number',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                ),
-                              ),
-                              fillColor: Color(0xfff3f4f6),
-                              filled: true,
-                            ),
-                          ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          // ignore: body_might_complete_normally_nullable
+                          validator: (value) {
+                            if (value!.length <= 7) {
+                              return "Please enter a valid Phone Number";
+                            }
+                          },
+                          controller: phoneController,
                         ),
-
-                        // Password Field
+                        SizedBox(height: 8.h),
                         Text(
                           S.of(context).Password,
                           style: TextStyles.light15,

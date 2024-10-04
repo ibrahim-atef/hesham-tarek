@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/features/home/data/models/course_list/course_list.dart';
 import 'package:hesham_tarek/features/my_courses/bloc/cubit/course_detail_cubit.dart';
@@ -102,17 +103,17 @@ class CourseContainer extends StatelessWidget {
               "${courseList.price}EGP",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
+              style: GoogleFonts.openSans(
                   fontSize: 16,
                   color: Color(0xFF22C55E),
                   fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
-            const Text(
+            Text(
               "4000 EGP",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: GoogleFonts.openSans(
                   decoration: TextDecoration.lineThrough,
                   fontSize: 14,
                   color: Colors.black38,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
@@ -31,7 +32,7 @@ final ThemeData lightTheme = ThemeData(
   appBarTheme: AppBarTheme(
     centerTitle: true,
     backgroundColor: const Color(0xFF2C4649),
-    titleTextStyle: TextStyle(
+    titleTextStyle: GoogleFonts.openSans(
         color: const Color(0xFFF2B91D),
         fontSize: 22.sp,
         fontWeight: FontWeight.w600),

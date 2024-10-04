@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hesham_tarek/features/home/presentation/views/widgets/home_app_bar.dart';
 
@@ -30,7 +31,7 @@ class NotSignedIn extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                  style: const TextStyle(
+                  style: GoogleFonts.openSans(
                     fontSize: 17,
                   ),
                   textAlign: TextAlign.center,
@@ -64,7 +65,7 @@ class NotSignedIn extends StatelessWidget {
                       children: [
                         Text(
                           S.of(context).Login,
-                          style: const TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontWeight: FontWeight.w500,
                               fontSize: 17),
@@ -113,7 +114,7 @@ class NotSignedIn extends StatelessWidget {
                       children: [
                         Text(
                           S.of(context).Createaccount,
-                          style: const TextStyle(
+                          style: GoogleFonts.openSans(
                               color: Colors.black,
                               fontWeight: FontWeight.w500,
                               fontSize: 17),

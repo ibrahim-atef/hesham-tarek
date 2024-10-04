@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/features/home/data/models/course_list/course_list.dart';
 import 'package:hesham_tarek/features/my_courses/bloc/cubit/course_detail_cubit.dart';
@@ -70,7 +71,7 @@ class ViewCourseButton extends StatelessWidget {
                         Expanded(
                           child: Text(
                             courseList.name ?? "",
-                            style: const TextStyle(
+                            style: GoogleFonts.openSans(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black),

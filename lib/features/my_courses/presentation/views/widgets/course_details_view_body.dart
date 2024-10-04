@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/features/home/data/models/course_list/course_list.dart';
 import 'package:hesham_tarek/features/my_courses/bloc/cubit/course_detail_cubit.dart';
@@ -78,7 +79,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                       Expanded(
                         child: Text(
                           widget.courseList.name ?? "",
-                          style: const TextStyle(
+                          style: GoogleFonts.openSans(
                             fontSize: 26,
                             color: Colors.black,
                             fontWeight: FontWeight.w700,
@@ -101,7 +102,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(S.of(context).Price,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -133,13 +134,13 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                               return Text(
                                   state.courseDetail.lessonApiDto!.length
                                       .toString(),
-                                  style: TextStyle(
+                                  style: GoogleFonts.openSans(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black));
                             } else {
                               return Text("",
-                                  style: TextStyle(
+                                  style: GoogleFonts.openSans(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black));
@@ -147,7 +148,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                           }),
                           const SizedBox(width: 7),
                           Text(S.of(context).Videos,
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.black)),
@@ -163,7 +164,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                           ),
                           const SizedBox(width: 7),
                           Text("5.0",
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.black)),
@@ -203,7 +204,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                             widget.courseList.description ??
                                 S.of(context).Nodescription,
                             textAlign: TextAlign.start,
-                            style: TextStyle(
+                            style: GoogleFonts.openSans(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.normal,
                                 color: Colors.black)),
@@ -221,7 +222,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                               vertical: 10.0, horizontal: 16),
                           child: Text("No Videos",
                               textAlign: TextAlign.start,
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.black)),
@@ -284,7 +285,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                               vertical: 10.0, horizontal: 16),
                           child: Text("No Files",
                               textAlign: TextAlign.start,
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.black)),
@@ -296,7 +297,7 @@ class _CourseDetailsViewBodyState extends State<CourseDetailsViewBody> {
                               vertical: 10.0, horizontal: 16),
                           child: Text("Files Found",
                               textAlign: TextAlign.start,
-                              style: TextStyle(
+                              style: GoogleFonts.openSans(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.black)),

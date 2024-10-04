@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hesham_tarek/features/my_courses/data/models/course_detail/lesson_api_dto.dart';
 import 'package:hesham_tarek/features/video/presentation/view/video_player.dart';
@@ -89,7 +90,7 @@ class _VideoTileState extends State<VideoTile> {
                   children: [
                     Text(
                       widget.videoTitle,
-                      style: const TextStyle(
+                      style: GoogleFonts.openSans(
                           fontSize: 14, fontWeight: FontWeight.bold),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -120,7 +121,7 @@ class _VideoTileState extends State<VideoTile> {
                                   borderRadius: BorderRadius.circular(8)),
                             ),
                             child: Text(S.of(context).Preview,
-                                style: const TextStyle(color: Colors.black)),
+                                style: GoogleFonts.openSans(color: Colors.black)),
                           )
                         else if (widget.isBought == false &&
                             widget.videoPrice != 0.0)
@@ -133,7 +134,7 @@ class _VideoTileState extends State<VideoTile> {
                             ),
                             child: Row(children: [
                               Text(S.of(context).Locked,
-                                  style: const TextStyle(color: Colors.black)),
+                                  style: GoogleFonts.openSans(color: Colors.black)),
                               const Icon(
                                 Icons.lock,
                                 size: 16,

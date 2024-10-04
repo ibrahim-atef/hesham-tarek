@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hesham_tarek/core/custom/phone_field.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/core/utils/functions.dart';
 import 'package:hesham_tarek/core/utils/service_locator.dart';
@@ -103,8 +102,19 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           style: TextStyles.light15,
                         ),
                         SizedBox(height: 8.h),
-                        PhoneField(
-                          phoneController: phoneController,
+                        SizedBox(
+                          height: 80.h,
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (value) {
+                              if (value!.length <= 7) {
+                                return "Please enter a valid Phone Number";
+                              }
+                            },
+                            controller: phoneController,
+                          ),
                         ),
                         SizedBox(
                           height: 9.h,
