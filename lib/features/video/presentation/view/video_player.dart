@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hesham_tarek/core/text_styles.dart';
 import 'package:hesham_tarek/features/my_courses/data/models/course_detail/lesson_api_dto.dart';
@@ -141,24 +140,38 @@ class _VideoWidgetState extends State<VideoWidget> {
   }
 
   @override
+  @override
   void dispose() {
+    // Ensure orientation is locked to portrait when the widget is disposed
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     _controller.removeListener(_listener);
     _saveVideoProgress();
     _controller.dispose();
     _disableScreenProtection();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    SystemChrome.setPreferredOrientations(DeviceOrientation.values);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Lock the orientation to portrait when not in fullscreen
+    if (!_isFullscreen) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    }
+
     return YoutubePlayerBuilder(
       onExitFullScreen: () {
         _updateSystemUIOverlays();
+        // When exiting fullscreen, lock the orientation to portrait
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
       },
       onEnterFullScreen: () {
         _updateSystemUIOverlays();
+        // Allow landscape when entering fullscreen
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,
+        ]);
       },
       player: YoutubePlayer(
         aspectRatio: 21 / 9,
@@ -170,7 +183,7 @@ class _VideoWidgetState extends State<VideoWidget> {
           Expanded(
             child: Text(
               _controller.metadata.title,
-              style:  GoogleFonts.openSans(
+              style: GoogleFonts.openSans(
                 color: Colors.white,
                 fontSize: 18.0,
               ),
@@ -214,9 +227,6 @@ class _VideoWidgetState extends State<VideoWidget> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ElevatedButton(
-                          style: ButtonStyle(
-                              padding: WidgetStatePropertyAll(
-                                  EdgeInsets.only(right: 8.w))),
                           onPressed: () {
                             Navigator.pushReplacement(
                               context,
@@ -250,9 +260,6 @@ class _VideoWidgetState extends State<VideoWidget> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ElevatedButton(
-                          style: ButtonStyle(
-                              padding: WidgetStatePropertyAll(
-                                  EdgeInsets.only(left: 8.w))),
                           onPressed: () {
                             Navigator.pushReplacement(
                               context,

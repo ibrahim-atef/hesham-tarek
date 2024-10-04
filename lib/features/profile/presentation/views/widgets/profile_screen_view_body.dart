@@ -220,7 +220,7 @@ class ProfileScreenViewBodyState extends State<ProfileScreenViewBody> {
                                     style: GoogleFonts.openSans(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xFF4F6163)),
+                                        color: const Color(0xFF4F6163)),
                                   ),
                                 ],
                               ),

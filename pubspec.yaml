@@ -28,7 +28,6 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  animated_button_bar: ^1.0.0
   auto_scroll_slider: ^1.0.1
   bloc: ^8.1.4
   cached_network_image: any
@@ -36,7 +35,6 @@ dependencies:
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
   device_info_plus: ^10.1.2
-  device_preview: ^1.2.0
   dio: ^5.6.0
   equatable: ^2.0.5
   flutter:
@@ -44,23 +42,19 @@ dependencies:
   flutter_animate: ^4.5.0
   flutter_bloc: ^8.1.6
   flutter_dotenv: ^5.1.0
-  flutter_inappwebview: ^6.1.0+1
   flutter_localizations:
     sdk: flutter
   flutter_map: ^7.0.2
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.10+1
-  flutter_toggle_button: ^0.0.3
   get_it: ^8.0.0
   google_fonts: ^6.2.1
-  intl_phone_field: ^3.2.0
   latlong2: ^0.9.1
   localstorage: ^5.0.0
   permission_handler: ^11.3.1
   persistent_bottom_nav_bar: ^6.2.1
   radio_group_v2: ^3.2.1
   screen_protector: ^1.4.2+1
-  scroll_loop_auto_scroll: ^0.0.5
   shared_preferences: ^2.3.2
   upgrader: ^11.1.0
   url_launcher: ^6.3.0

@@ -105,7 +105,7 @@ class CourseContainer extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.openSans(
                   fontSize: 16,
-                  color: Color(0xFF22C55E),
+                  color: const Color(0xFF22C55E),
                   fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
