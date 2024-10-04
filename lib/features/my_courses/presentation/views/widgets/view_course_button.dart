@@ -19,95 +19,109 @@ class ViewCourseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 130.h,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x1A000000),
-            offset: Offset(0, 2),
-            blurRadius: 2,
-            spreadRadius: 0,
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 114.h,
-              width: 114.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                      image: CachedNetworkImageProvider(
-                          'http://adlink2019-001-site58.etempurl.com/lessonimg/${courseList.id}.jpg'))),
+    return GestureDetector(
+      onTap: () {
+        context
+            .read<CourseDetailCubit>()
+            .getCourseDetails(courseList.id.toString());
+        PersistentNavBarNavigator.pushNewScreen(
+          context,
+          screen: CourseDetailsView(courseList: courseList),
+          withNavBar: false,
+          pageTransitionAnimation: PageTransitionAnimation.fade,
+        );
+      },
+      child: Container(
+        height: 130.h,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Color(0x1A000000),
+              offset: Offset(0, 2),
+              blurRadius: 2,
+              spreadRadius: 0,
             ),
-          ),
-          Expanded(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          courseList.name ?? "",
-                          style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.favorite_border_rounded,
-                            color: Colors.red,
-                          ))
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+          ],
+        ),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 114.h,
+                width: 114.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                        image: CachedNetworkImageProvider(
+                            'http://adlink2019-001-site58.etempurl.com/lessonimg/${courseList.id}.jpg'))),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ElevatedButton(
-                            style: const ButtonStyle(
-                                backgroundColor:
-                                    WidgetStatePropertyAll(Color(0xff2C4649))),
-                            onPressed: () {
-                              context
-                                  .read<CourseDetailCubit>()
-                                  .getCourseDetails(courseList.id.toString());
-                              PersistentNavBarNavigator.pushNewScreen(
-                                context,
-                                screen:
-                                    CourseDetailsView(courseList: courseList),
-                                withNavBar: false,
-                                pageTransitionAnimation:
-                                    PageTransitionAnimation.fade,
-                              );
-                            },
-                            child: Text(
-                              S.of(context).ViewCourse,
-                              style: TextStyles.light15,
-                            ),
+                        Expanded(
+                          child: Text(
+                            courseList.name ?? "",
+                            style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black),
                           ),
-                        )
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.favorite_border_rounded,
+                              color: Colors.red,
+                            ))
                       ],
                     ),
-                  )
-                ]),
-          ),
-        ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: ElevatedButton(
+                              style: const ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(
+                                      Color(0xff2C4649))),
+                              onPressed: () {
+                                context
+                                    .read<CourseDetailCubit>()
+                                    .getCourseDetails(courseList.id.toString());
+                                PersistentNavBarNavigator.pushNewScreen(
+                                  context,
+                                  screen:
+                                      CourseDetailsView(courseList: courseList),
+                                  withNavBar: false,
+                                  pageTransitionAnimation:
+                                      PageTransitionAnimation.fade,
+                                );
+                              },
+                              child: Text(
+                                S.of(context).ViewCourse,
+                                style: TextStyles.light15,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ]),
+            ),
+          ],
+        ),
       ),
     );
   }
