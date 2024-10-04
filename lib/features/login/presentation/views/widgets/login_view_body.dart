@@ -13,7 +13,6 @@ import 'package:hesham_tarek/features/login/presentation/views/widgets/logo_plus
 import 'package:hesham_tarek/features/register/presentation/views/register_view.dart';
 import 'package:hesham_tarek/features/splash/presentation/views/widgets/blur_container.dart';
 import 'package:hesham_tarek/generated/l10n.dart';
-import 'package:intl_phone_field/countries.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -106,11 +105,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         SizedBox(height: 8.h),
                         PhoneField(
                           phoneController: phoneController,
-                          onCountryChanged: (Country country) {
-                            setState(() {
-                              selectedCountryCode = country.code;
-                            });
-                          },
                         ),
                         SizedBox(
                           height: 9.h,
@@ -202,10 +196,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                     String imei =
                                         await Functions.getDeviceIdentifiers();
                                     String phoneNumber = phoneController.text;
-                                    if (selectedCountryCode == 'EG' &&
-                                        !phoneNumber.startsWith('0')) {
-                                      phoneNumber = "0$phoneNumber";
-                                    }
                                     context.read<LoginCubit>().loginUser(
                                         phoneNumber,
                                         passwordController.text,
