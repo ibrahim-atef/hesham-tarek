@@ -62,6 +62,12 @@ dependencies:
   youtube_explode_dart: ^2.2.1
   youtube_player_flutter: ^9.1.0
   youtube_player_iframe: ^5.1.5
+dependency_overrides:
+  flutter_inappwebview_ios:
+    git:
+      url: https://github.com/andychucs/flutter_inappwebview
+      ref: master
+      path: flutter_inappwebview_ios
 dev_dependencies:
   flutter_launcher_icons: ^0.14.1
   flutter_lints: ^4.0.0
