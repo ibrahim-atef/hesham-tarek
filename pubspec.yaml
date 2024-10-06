@@ -42,9 +42,6 @@ dependencies:
   flutter_animate: ^4.5.0
   flutter_bloc: ^8.1.6
   flutter_dotenv: ^5.1.0
-  flutter_inappwebview: ^6.1.4
-  flutter_inappwebview_ios: ^1.1.2
-  webview_flutter: ^4.9.0
   flutter_localizations:
     sdk: flutter
   flutter_map: ^7.0.2
@@ -64,13 +61,6 @@ dependencies:
   youtube: ^2.0.0
   youtube_explode_dart: ^2.2.1
   youtube_player_flutter: ^9.1.0
-  youtube_player_iframe: ^5.1.5
-dependency_overrides:
-  flutter_inappwebview_ios:
-    git:
-      url: https://github.com/andychucs/flutter_inappwebview
-      ref: master
-      path: flutter_inappwebview_ios
 dev_dependencies:
   flutter_launcher_icons: ^0.14.1
   flutter_lints: ^4.0.0
