@@ -1,0 +1,11 @@
+workflows:
+  ios-workflow:
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.DevOfc.heshamtarek
+    scripts:
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
+      - name: Build ipa for distribution
+        script: xcode-project build-ipa --scheme "Runner" --export-options-plist "$CM_BUILD_DIR/export_options.plist"
