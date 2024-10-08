@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>method</key>
+    <string>app-store</string> <!-- Change to ad-hoc if not distributing to App Store -->
+    <key>teamID</key>
+    <string>CY6K77UA79</string> <!-- Replace with your actual Team ID -->
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>com.DevOfc.heshamtarek</key> <!-- Replace with your actual bundle identifier -->
+        <string>HishamTarek new profile</string> <!-- Replace with your provisioning profile name -->
+    </dict>
+</dict>
+</plist>
