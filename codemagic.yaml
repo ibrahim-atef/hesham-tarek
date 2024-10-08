@@ -8,11 +8,8 @@ workflows:
       ios_signing:
           provisioning_profiles:
             - profile: HishamTarek new profile
-              environment_variable: THIS_PROFILE_PATH_ON_DISK
-            # - ...
           certificates:
             - certificate: Codemagic fetch certificate
-              environment_variable: THIS_CERTIFICATE_PATH_ON_DISK
       vars:
         APP_STORE_APPLE_ID: 6736618536
       flutter: stable
