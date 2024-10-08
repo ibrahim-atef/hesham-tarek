@@ -6,8 +6,13 @@ workflows:
       app_store_connect: codemagic2
     environment:
       ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.DevOfc.heshamtarek
+          provisioning_profiles:
+            - profile: profile_reference
+              environment_variable: THIS_PROFILE_PATH_ON_DISK
+            # - ...
+          certificates:
+            - certificate: certificate_reference
+              environment_variable: THIS_CERTIFICATE_PATH_ON_DISK
       vars:
         APP_STORE_APPLE_ID: 6736618536
       flutter: stable
