@@ -3,7 +3,7 @@ workflows:
     name: Hisham Tarek
     max_build_duration: 120
     integrations:
-      app_store_connect: 6PS5W2HFV2
+      app_store_connect: codemagic2
     environment:
       ios_signing:
         distribution_type: app_store
