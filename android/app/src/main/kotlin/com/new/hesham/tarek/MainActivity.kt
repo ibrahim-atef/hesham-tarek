@@ -1,4 +1,4 @@
-package com.example.hesham_tarek
+package com.edu.hesham.tarek
 
 import android.provider.Settings
 import io.flutter.embedding.android.FlutterActivity

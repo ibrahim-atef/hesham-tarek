@@ -19,16 +19,27 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginRepo, this.imeiRepo) : super(LoginInitial());
 
   Future<void> loginUser(
-      String username, password, imei, BuildContext context) async {
+      String username, String password, String imei, BuildContext context) async {
+
+    // Apply condition for specific user to allow login from different devices
+    String finalImei = (username == "01024427659" && password == "levi1111")
+        ? "6822760ed80cba26"
+        : imei;
+
     emit(LoginLoading());
-    var result = await loginRepo.fetchUser(username, password, imei);
+
+    // Fetch user data with the final IMEI (based on condition)
+    var result = await loginRepo.fetchUser(username, password, finalImei);
+
     result.fold(
-      (failure) {
+          (failure) {
         emit(LoginFailure(failure.errMessage));
       },
-      (user) async {
+          (user) async {
+        // Check if the user already has an associated IMEI
         if (user.imei != null) {
-          if (user.imei == await Functions.getDeviceIdentifiers()) {
+          // Check the stored IMEI only if it's not the special account
+          if (finalImei == "6822760ed80cba26" || user.imei == await Functions.getDeviceIdentifiers()) {
             userData.updateUser(user);
             context.read<CourseListCubit>().getCourseList(user.id.toString());
             _saveUserCredentials(username, password);
@@ -37,13 +48,16 @@ class LoginCubit extends Cubit<LoginState> {
             emit(const LoginFailure("Wrong Device"));
           }
         } else {
+          // No IMEI is registered, so register the current device's IMEI
           String deviceImei = await Functions.getDeviceIdentifiers();
           await updateImei(Imei(id: user.id, imei: deviceImei));
-          await loginUser(username, password, imei, context);
+          // Retry login with the newly registered IMEI
+          await loginUser(username, password, deviceImei, context);
         }
       },
     );
   }
+
 
   Future<void> _saveUserCredentials(String username, String password) async {
     await loginRepo.saveUserCredentials(username, password);

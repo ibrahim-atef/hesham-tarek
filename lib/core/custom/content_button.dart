@@ -32,7 +32,7 @@ class ContentButton extends StatelessWidget {
         );
       },
       child: Container(
-        height: 130.h,
+
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(16)),
           color: Colors.white,
@@ -50,8 +50,8 @@ class ContentButton extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 114.h,
-                width: 114.w,
+                height: 105.h,
+                width: 105.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
@@ -90,7 +90,7 @@ class ContentButton extends StatelessWidget {
                               Text(
                                 "${courseList.price?.toString()} EGP",
                                 style:  GoogleFonts.openSans(
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: const Color(0xFF22C55E),
                                     fontWeight: FontWeight.w500),
                               ),
@@ -104,7 +104,7 @@ class ContentButton extends StatelessWidget {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 4.w),
+                            padding: EdgeInsets.symmetric(horizontal: 1.w),
                             child: ElevatedButton(
                               style: ButtonStyle(
                                   backgroundColor: WidgetStateProperty.all(
